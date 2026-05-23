@@ -13,11 +13,11 @@
 #if ASSERTS_ENABLED
 
 # if PLATFORM_WINDOWS && COMPILER_MSVC
-#  define DebugBreak() __debugbreak()
+#  define SDebugBreak() __debugbreak()
 # elif COMPILER_GCC 
-#  define DebugBreak() __builtin_trap()
+#  define SDebugBreak() __builtin_trap()
 # else
-#  define DebugBreak() (*(volatile int*)0 = 0)
+#  define SDebugBreak() (*(volatile int*)0 = 0)
 # endif
 
 ////////////////////////////////////////////////////////////////
@@ -27,7 +27,7 @@ shared_function void report_assertion_failure(const char* expression, const char
 
 # define AssertBody_(c, msg) Stmnt(if(!(c)){                                                \
 report_assertion_failure(#c, msg, __FILE__, __LINE__); \
-DebugBreak();})
+SDebugBreak();})
 
 
 # define AssertAllways(c) AssertBody_(c, "")

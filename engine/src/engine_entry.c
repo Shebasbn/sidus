@@ -1,3 +1,5 @@
 #include "core.h"
-#include "core/core_assert.c"
-#include "core/core_logger.c" 
+#include "platform\platform.h"
+
+#include "core\core_logger.c" 
+#include "platform\platform_win32.c"

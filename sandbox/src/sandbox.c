@@ -9,6 +9,8 @@ int main()
     SINFO("A test message: %f", 3.14f);
     SDEBUG("A test message: %f", 3.14f);
     STRACE("A test message: %f", 3.14f);
-    Assert(!TRUE);
+    
+    
+    
     return 0;
 }

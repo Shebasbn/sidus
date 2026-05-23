@@ -12,7 +12,7 @@ set CommonCFlags=/nologo /W4 /WX /std:c11 /TC /FC /Zm200 /FS
 set DebugFlags=/Zi /Od /MDd /RTC1
 set ReleaseFlags=/O2 /Oi /MD /GL /DNDEBUG
  
-set CommonDefines=/DWIN32_LEAN_AND_MEAN /D_CRT_SECURE_NO_WARNINGS /DSIDUS_EXPORT
+set CommonDefines=/D_CRT_SECURE_NO_WARNINGS /DSIDUS_EXPORT
 set DebugDefines=/D_DEBUG /DBUILD_DEBUG
 set ReleaseDefines=/DNDEBUG /DBUILD_RELEASE
 

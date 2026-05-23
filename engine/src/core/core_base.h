@@ -44,6 +44,9 @@ typedef void VoidFunction(void);
 # define no_name_mangle
 #endif
 
+#define root_global no_name_mangle
+#define root_function no_name_mangle function
+
 #ifdef SIDUS_EXPORT
 # if COMPILER_MSVC
 #  define shared_function no_name_mangle __declspec(dllexport)
