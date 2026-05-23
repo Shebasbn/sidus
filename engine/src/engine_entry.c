@@ -1,2 +1,3 @@
-#include "base_ctx_crack.h"
-#include "base_core.h"
+#include "core.h"
+#include "core/core_assert.c"
+#include "core/core_logger.c" 
