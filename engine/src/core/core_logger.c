@@ -2,7 +2,7 @@
 //~ Sebas: Log Functions
 
 function B8   
-init_loggingr()
+initialize_logging()
 {
     // TODO(Sebas): Create a log file.
     return TRUE;

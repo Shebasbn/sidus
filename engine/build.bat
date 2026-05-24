@@ -17,7 +17,7 @@ set DebugDefines=/D_DEBUG /DBUILD_DEBUG
 set ReleaseDefines=/DNDEBUG /DBUILD_RELEASE
 
 set IncludeFlags=/I"src" /I"%VULKAN_SDK%\Include"
-set LinkerFlags=/INCREMENTAL:NO /OPT:REF /LIBPATH:"%VULKAN_SDK%\Lib" user32.lib vulkan-1.lib 
+set LinkerFlags=/INCREMENTAL:NO /OPT:REF /LIBPATH:"%VULKAN_SDK%\Lib" user32.lib winmm.lib vulkan-1.lib 
 
 if /I "%CONFIG%"=="release" (
     set ActiveFlags=%CommonCFlags% %ReleaseFlags%

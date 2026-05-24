@@ -35,7 +35,7 @@ platform_startup(PlatformHandle* platform_handle,
 {
     B8 result = FALSE;
     
-    platform_handle->state = malloc(sizeof(PlatformState));
+    platform_handle->state = sallocate(sizeof(PlatformState), MEMORY_TAG_PLATFORM);
     PlatformState* state = platform_handle->state;
     
     state->instance = GetModuleHandleA(0);
@@ -116,20 +116,20 @@ platform_startup(PlatformHandle* platform_handle,
         {
             MessageBoxA(0, "Window Creation Failed!", "Error!",MB_ICONEXCLAMATION | MB_OK);
             state->window = NULL;
-            SFATAL_LIT("Window Creation Failed!");
+            SFATAL("Window Creation Failed!");
             result = FALSE;
         }
     }
     else
     {
         MessageBoxA(0, "Window Registration Failed!", "Error!",MB_ICONEXCLAMATION | MB_OK);
-        SFATAL_LIT("Window Registration Failed!");
+        SFATAL("Window Registration Failed!");
         result = FALSE;
     }
     
     if (result == FALSE)
     {
-        SFATAL_LIT("Failed Platform Startup!");
+        SFATAL("Failed Platform Startup!");
     }
     return result;
 }
@@ -248,14 +248,19 @@ platform_sleep(U64 ms)
 function B8    
 platform_pump_messages(PlatformHandle platform_handle)
 {
+    B8 result = TRUE;
     UnusedVariable(platform_handle);
-    MSG message;
-    while(PeekMessageA(&message, NULL, 0, 0, PM_REMOVE))
+    MSG msg = {};
+    while(PeekMessageA(&msg, NULL, 0, 0, PM_REMOVE))
     {
-        TranslateMessage(&message);
-        DispatchMessageA(&message);
+        if (msg.message == WM_QUIT)
+        {
+            result = FALSE;
+        }
+        TranslateMessage(&msg);
+        DispatchMessageA(&msg);
     }
-    return TRUE;
+    return result;
 }
 
 LRESULT CALLBACK 
@@ -270,6 +275,8 @@ win32_process_messages(HWND window, U32 msg, WPARAM w_param, LPARAM l_param)
         } break;
         case WM_CLOSE:
         {
+            timeEndPeriod(1);
+            DestroyWindow(window);
             // TODO(Sebas): Fire an event for the application to quit.
         } break;
         case WM_DESTROY:

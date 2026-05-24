@@ -34,4 +34,6 @@ if not exist ..\build\bin mkdir ..\build\bin
 
 cl %ActiveFlags% %ActiveDefines% /I. %IncludeFlags% src\%FileName% /Fo"..\build\\" /Fe"..\build\bin\%Assembly%.exe" /link %LinkerFlags%
 
+cl  /P %ActiveFlags% %ActiveDefines% /I. %IncludeFlags%  /Fi"..\build\sandbox.i" src\%FileName% 
+
 exit /b %ERRORLEVEL%

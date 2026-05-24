@@ -84,7 +84,7 @@ typedef void VoidFunction(void);
 # define read_only 
 #endif
 
-#if COMPILER_GCC || COMPILER_CLANG
+#if COMPILER_GCC || COMPILER_CLANG || COMPILER_MSVC
 # define SVA_ARGS(fmt, ...) fmt, ##__VA_ARGS__
 #else
 # define SVA_ARGS(fmt, ...) fmt, __VA_ARGS__
@@ -121,5 +121,25 @@ MemoryCopy((dst), (src), sizeof(*(dst)));)
 #define ArrayCount(arr) (sizeof(arr) / sizeof(*(arr)))
 #define IntFromPtr(ptr) (U64)(((U8*)ptr) - 0)
 #define PtrFromInt(n) (void*)(((U8*)0) + n)
+
+////////////////////////////////////////////////////////////////
+//~ Sebas: Units
+
+#define Bytes(n) (n)
+#define Kilobytes(n) (n << 10)
+#define Megabytes(n) (n << 20)
+#define Gigabytes(n) (((U64)n) << 30)
+#define Terabytes(n) (((U64)n) << 40)
+
+#define Thousand(n) ((n)*1000)
+#define Million(n)  ((n)*1000000)
+#define Billion(n)  ((n)*1000000000LL)
+
+////////////////////////////////////////////////////////////////
+//~ Sebas: Swapping
+
+#define Swap(type, a, b) Stmnt( type _swapper_ = a; a = b; b = _swapper_; )
+
+
 
 #endif //CORE_BASE_H

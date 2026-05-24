@@ -27,10 +27,10 @@ struct TimeStamp
 ////////////////////////////////////////////////////////////////
 //~ Sebas: Platform Macros
 
-#define MemoryReserve(size) platform_memory_reserve(size)
-#define MemoryCommit(ptr, size) platform_memory_commit(ptr, size)
-#define MemoryDecommit(ptr, size) platform_memory_decommit(ptr, size)
-#define MemoryFree(ptr) platform_memory_reserve(ptr)
+//#define MemoryReserve(size) platform_memory_reserve(size)
+//#define MemoryCommit(ptr, size) platform_memory_commit(ptr, size)
+//#define MemoryDecommit(ptr, size) platform_memory_decommit(ptr, size)
+//#define MemoryFree(ptr) platform_memory_reserve(ptr)
 
 
 ////////////////////////////////////////////////////////////////

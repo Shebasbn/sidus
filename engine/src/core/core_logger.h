@@ -40,46 +40,46 @@ typedef enum LogLevel
 ////////////////////////////////////////////////////////////////
 //~ Sebas: Log Fucntions 
 
-function B8   init_loggingr();
+function B8   initialize_logging();
 function void shut_down_logging();
 
 shared_function void log_output(LogLevel level, const char* message, ...);
 
-#define SFATAL(msg, ...) log_output(LOG_LEVEL_FATAL , SVA_ARGS(msg, __VA_ARGS__))
-#define SFATAL_LIT(msg) SFATAL("%s", msg)
-#define SERROR(msg, ...) log_output(LOG_LEVEL_ERROR, SVA_ARGS(msg, __VA_ARGS__))
-#define SERROR_LIT(msg) SERROR("%s", msg)
+#define SFATAL(msg, ...) log_output(LOG_LEVEL_FATAL , msg, ##__VA_ARGS__)
+/*#define SFATAL_LIT(msg) SFATAL("%s", msg)*/
+#define SERROR(msg, ...) log_output(LOG_LEVEL_ERROR, msg, ##__VA_ARGS__)
+/*#define SERROR_LIT(msg) SERROR("%s", msg)*/
 
 #if LOG_WARN_ENABLED
-# define SWARN(msg, ...) log_output(LOG_LEVEL_WARN, SVA_ARGS(msg, __VA_ARGS__))
-# define SWARN_LIT(msg) SWARN("%s", msg)
+# define SWARN(msg, ...) log_output(LOG_LEVEL_WARN, msg, ##__VA_ARGS__)
+/*# define SWARN_LIT(msg) SWARN("%s", msg)*/
 #else
 # define SWARN(msg, ...)
-# define SWARN_LIT(msg)
+/*# define SWARN_LIT(msg)*/
 #endif
 
 #if LOG_INFO_ENABLED
-# define SINFO(msg, ...) log_output(LOG_LEVEL_INFO, SVA_ARGS(msg, __VA_ARGS__))
-# define SINFO_LIT(msg) SINFO("%s", msg)
+# define SINFO(msg, ...) log_output(LOG_LEVEL_INFO, msg, ##__VA_ARGS__)
+/*# define SINFO_LIT(msg) SINFO("%s", msg)*/
 #else
 # define SINFO(msg, ...)
-# define SINFO_LIT(msg)
+/*# define SINFO_LIT(msg)*/
 #endif
 
 #if LOG_DEBUG_ENABLED
-# define SDEBUG(msg, ...) log_output(LOG_LEVEL_DEBUG, SVA_ARGS(msg, __VA_ARGS__))
-# define SDEBUG_LIT(msg) SDEBUG("%s", msg)
+# define SDEBUG(msg, ...) log_output(LOG_LEVEL_DEBUG, msg, ##__VA_ARGS__)
+/*# define SDEBUG_LIT(msg) SDEBUG("%s", msg)*/
 #else
 # define SDEBUG(msg, ...)
-# define SDEBUG_LIT(msg)
+/*# define SDEBUG_LIT(msg)*/
 #endif
 
 #if LOG_TRACE_ENABLED
-# define STRACE(msg, ...) log_output(LOG_LEVEL_TRACE, SVA_ARGS(msg, __VA_ARGS__))
-# define STRACE_LIT(msg) STRACE("%s", msg)
+# define STRACE(msg, ...) log_output(LOG_LEVEL_TRACE, msg, ##__VA_ARGS__)
+/*# define STRACE_LIT(msg) STRACE("%s", msg)*/
 #else
 # define STRACE(msg, ...)
-# define STRACE_LIT(msg)
+/*# define STRACE_LIT(msg)*/
 #endif
 
 
