@@ -1,0 +1,90 @@
+version(1);
+
+project_name = "Sidus";
+
+////////////////////////////////////////////////////////////////
+//~ Sebas: Indentation
+
+indent_width = "2";
+default_tab_width = "2";
+
+patterns =
+{
+    "*.c",
+    "*.cpp",
+    "*.jai",
+    "*.odin",
+    "*.zig",
+    "*.h",
+    "*.inc",
+    "*.bat",
+    "*.sh",
+    "*.4coder",
+    "*.txt",
+};
+
+blacklist_patterns =
+{
+    ".*",
+};
+
+paths =
+{
+    { .path = ".",     .recursive = false, .relative = true, },
+    { .path = "code",  .recursive = true , .relative = true, },
+    { .path = "notes", .recursive = true , .relative = true, },
+};
+
+load_paths =
+{
+    .win   = paths,
+    .linux = paths,
+};
+
+command_list =
+{
+    {
+        .name = "build_engine",
+        .out = "*compilation*",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false,
+        .cmd =
+        {
+            { "build.bat debug engine", .os = "win" },
+            { "echo Linux build command not implemented for 4coder project.", .os = "linux" },
+        },
+    },
+    
+    {
+        .name = "build_sandbox",
+        .out = "*compilation*",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false,
+        .cmd =
+        {
+            { "build.bat debug sandbox", .os = "win" },
+            { "echo Linux build command not implemented for 4coder project.", .os = "linux" },
+        },
+    },
+    
+    {
+        .name = "run",
+        .out = "*compilation*",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false,
+        .cmd =
+        {
+            { "echo Windows run command not implemented for 4coder project.", .os = "win" },
+            { "echo Linux run command not implemented for 4coder project.", .os = "linux" },
+        },
+    },
+    
+};
+
+fkey_command[1] = "build_engine";
+fkey_command[2] = "build_sandbox";
+fkey_command[3] = "";
+fkey_command[4] = "";
